@@ -7,7 +7,7 @@ Current release ships NDVI, canopy-density, forest-mask, and related utilities.
 
 ```bash
 # clone & enter repo
-git clone https://github.com/<org>/forest-stack.git
+git clone https://github.com/datakaveri/forest-stack.git
 cd forest-stack
 
 # create venv and install
