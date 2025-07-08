@@ -55,10 +55,10 @@ class NDVIProcessor:
             dir_path.mkdir(parents=True, exist_ok=True)
             
         # Load district geometry
-        with open('./data/gis/rajasthan-convex-hull.geojson') as f:
+        with open('../../common/data/rajasthan-convex-hull.geojson') as f:
             self.district_geom = json.load(f)['features'][0]['geometry']
 
-        with open('./data/gis/rajasthan_state_simp.geojson') as f:
+        with open('../../common/data/rajasthan_state_simp.geojson') as f:
             self.district_geom_detailed = json.load(f)['features'][0]['geometry']
             self.district_shape = shape(self.district_geom_detailed)
         
