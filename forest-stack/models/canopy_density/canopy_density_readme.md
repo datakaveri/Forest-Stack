@@ -35,6 +35,7 @@ It is optimized for tiled, large-area processing and is designed to run efficien
 ---
 
 ## 2. Folder expectations
+```
 forest-stack/
 ├── data/
 │   ├── input/
@@ -52,6 +53,7 @@ forest-stack/
 │           └── forest_density_readme.md   # This README
 ├── requirements.txt
 └── README.md
+```
 ---
 
 ## 3. Configuration Expectations

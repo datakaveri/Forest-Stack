@@ -27,7 +27,7 @@ The model is built for the Rajasthan and can be generalized to other geographies
 ---
 
 ## 2. Folder expectations
-
+```
 forest-stack/
 ├── data/
 │   ├── gis/
@@ -46,6 +46,7 @@ forest-stack/
 ├── LICENSE
 ├── README.md
 └── requirements.txt
+```
 ---
 
 ## 3. Configuration Expectations
