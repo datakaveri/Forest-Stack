@@ -30,6 +30,7 @@ This module automates the end-to-end processing pipeline for generating Normaliz
 ---
 
 ## 2. Folder expectations
+```
 forest-stack/
 ├── data/
 │   └── ndvi/
@@ -48,6 +49,7 @@ forest-stack/
     └── data/
         ├── rajasthan_state_simp.geojson    # Simplified boundary
         └── rajasthan-convex-hull.geojson   # Outer convex hull
+```
 ---
 
 ## 3. Configuration Expectations
