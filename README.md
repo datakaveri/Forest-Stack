@@ -1,4 +1,4 @@
-# Forest-Stack BI Library
+# Forest-Stack Core Modules
 
 Open-source analytics modules for forestry and climate workflows. A comprehensive Python library for processing satellite imagery, analyzing forest metrics, and generating climate data products using Sentinel-2 imagery and other geospatial datasets.
 
