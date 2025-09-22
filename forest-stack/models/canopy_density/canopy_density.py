@@ -83,26 +83,60 @@ def compute_fcd_array(red, green, blue, nir, swir):
     return fcd
 
 
-def classify_fcd(fcd: xr.DataArray) -> xr.DataArray:
-    """Apply FCD classification over the array
+def classify_fcd(fcd: xr.DataArray, state_code: str = "default", custom_thresholds: dict = None) -> xr.DataArray:
+    """Apply FCD classification over the array with configurable thresholds
 
     Args:
         fcd (xr.DataArray): FCD Array to classify
+        state_code (str, optional): State code for predefined thresholds. 
+                                   Options: default, RJ (Rajasthan). Defaults to "default".
+        custom_thresholds (dict, optional): Custom threshold dictionary. If provided, 
+                                          overrides state_code parameter.
+                                          Format: {
+                                              "open_forest": {"min": 0, "max": 30},
+                                              "low_density": {"min": 30, "max": 55},
+                                              "medium_density": {"min": 55, "max": 80},
+                                              "high_density": {"min": 80, "max": 100}
+                                          }
 
     Returns:
-        xr.DataArray: Classified array
+        xr.DataArray: Classified array with values:
+                     0 = Non-forest
+                     1 = Open forest
+                     2 = Low density forest
+                     3 = Medium density forest  
+                     4 = High density forest
     """
+    # Get thresholds from configuration or use custom ones
+    if custom_thresholds is not None:
+        thresholds = custom_thresholds
+    else:
+        config = Config()
+        thresholds = config.get_fcd_thresholds(state_code)
+    
+    # Extract threshold values
+    open_max = thresholds["open_forest"]["max"]
+    low_min = thresholds["low_density"]["min"] 
+    low_max = thresholds["low_density"]["max"]
+    med_min = thresholds["medium_density"]["min"]
+    med_max = thresholds["medium_density"]["max"]
+    high_min = thresholds["high_density"]["min"]
+    
+    # Apply classification
     classes = np.zeros_like(fcd, dtype=np.uint8)
-    classes[(fcd > 0) & (fcd <= 30)] = 1  # Open forest
-    classes[(fcd > 30) & (fcd <= 55)] = 2  # Low density
-    classes[(fcd > 55) & (fcd <= 80)] = 3  # Medium density
-    classes[fcd > 80] = 4  # High density
+    classes[(fcd > 0) & (fcd <= open_max)] = 1  # Open forest
+    classes[(fcd > low_min) & (fcd <= low_max)] = 2  # Low density
+    classes[(fcd > med_min) & (fcd <= med_max)] = 3  # Medium density
+    classes[fcd > high_min] = 4  # High density
 
     classes_da = xr.DataArray(
         classes,
         dims=fcd.dims,
         coords=fcd.coords,
-        attrs={"description": "Forest canopy density classes"},
+        attrs={
+            "description": "Forest canopy density classes",
+            "state_code": state_code
+        },
     )
 
     return classes_da
@@ -114,15 +148,21 @@ def compute_forrest_density(
     grid_size: float,
     output_file_path: str,
     forrest_mask_file_path: str,
+    state_code: str = "default",
+    custom_thresholds: dict = None,
 ):
-    """Compute Forrest Canopy Density
+    """Compute Forest Canopy Density with configurable classification thresholds
 
     Args:
         aoi_file_path (str): Path to the Area Of Interest vector file
         year (int): Year to compute FCD of
         grid_size (float): Grid size for polygon chunking
         output_file_path (str): Path to store the computed FCD file. Path must contain .tif equivalent suffix
-        forrest_mask_file_path (str): Path to the forrest mask .tif file
+        forrest_mask_file_path (str): Path to the forest mask .tif file
+        state_code (str, optional): State code for predefined thresholds.
+                                   Options: default, RJ (Rajasthan). Defaults to "default".
+        custom_thresholds (dict, optional): Custom threshold dictionary. If provided,
+                                          overrides state_code parameter.
     """
     # READ AOI
     df_rajasthan = gpd.read_file(aoi_file_path)
@@ -219,7 +259,7 @@ def compute_forrest_density(
         ds_mosaiced_density = merge_arrays(grid_datasets, nodata=0)
 
         # CLASSIFY FCD
-        ds_mosaiced_density = classify_fcd(ds_mosaiced_density)
+        ds_mosaiced_density = classify_fcd(ds_mosaiced_density, state_code, custom_thresholds)
 
         # ADD FORREST MASK
         ds_forest = rxr.open_rasterio(forrest_mask_file_path)
@@ -232,6 +272,8 @@ def compute_forrest_density(
 
 
 if __name__ == "__main__":
+    # Example usage with Rajasthan state code
     compute_forrest_density(
-        AOI_FILE_PATH, YEAR, GRID_SIZE, OUTPUT_FILE_PATH, FOREST_MASK_FILE_PATH
+        AOI_FILE_PATH, YEAR, GRID_SIZE, OUTPUT_FILE_PATH, FOREST_MASK_FILE_PATH,
+        state_code="RJ"  # Use Rajasthan state code for FCD thresholds
     )
