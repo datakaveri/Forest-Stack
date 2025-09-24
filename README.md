@@ -41,24 +41,25 @@ pip install -e .
 ```
 Forest-Stack/
 ├── forest-stack/                    # Main package
-│   ├── models/                      # Core forest analysis models
+│   ├── gis-models/                  # Core GIS and forest analysis models
 │   │   ├── ndvi/                   # NDVI processing and mosaics
 │   │   ├── forest_mask/            # Forest/non-forest classification
 │   │   └── canopy_density/         # Forest canopy density analysis
+│   ├── modules/                    # Analysis modules and processing tools
+│   │   ├── carbon_calculator/      # Carbon sequestration calculations (TypeScript)
+│   │   ├── forms/                  # Digital forms and management tools
+│   │   │   └── wildlife/           # Wildlife management forms
+│   │   ├── groundwater_depth/      # Groundwater depth analysis
+│   │   ├── groundwater_trend/      # Groundwater trend monitoring
+│   │   ├── rainfall/               # Rainfall processing utilities
+│   │   └── soil_moisture/          # Soil moisture analysis
 │   ├── common/                     # Shared utilities and configuration
 │   │   ├── config/                 # Configuration management
 │   │   ├── data/                   # Sample data and boundary files
 │   │   │   ├── rajasthan_state_simp.geojson
 │   │   │   └── rajasthan-convex-hull.geojson
-│   │   └── scripts/                # Climate, utility, and management scripts
-│   │       ├── carbon_calculator/  # Carbon sequestration calculations (TypeScript)
+│   │   └── scripts/                # Core utility scripts
 │   │       ├── forest_common/      # Common forestry utilities
-│   │       ├── forms/              # Digital forms and management tools
-│   │       │   └── wildlife/       # Wildlife management forms
-│   │       ├── groundwater_depth/  # Groundwater depth analysis
-│   │       ├── groundwater_trend/  # Groundwater trend monitoring
-│   │       ├── rainfall/           # Rainfall processing utilities
-│   │       ├── soil_moisture/      # Soil moisture analysis
 │   │       ├── tif-to-pmtimles/    # Format conversion utilities
 │   │       └── treecover_and_canopy_tile_commands/ # Tile processing
 │   └── __init__.py
@@ -67,9 +68,9 @@ Forest-Stack/
 └── README.md
 ```
 
-## Core Modules
+## Core GIS Models
 
-### NDVI Processing (`forest_stack.models.ndvi`)
+### NDVI Processing (`forest_stack.gis_models.ndvi`)
 Advanced NDVI mosaic generation using Sentinel-2 imagery with:
 - Automated cloud masking and quality filtering using SCL (Scene Classification Layer)
 - Seasonal and temporal composite generation
@@ -78,7 +79,7 @@ Advanced NDVI mosaic generation using Sentinel-2 imagery with:
 - Web-ready output formats (GeoTIFF, PMTiles)
 - Configurable STAC catalog integration (Planetary Computer, Element84)
 
-### Forest Mask Classification (`forest_stack.models.forest_mask`)
+### Forest Mask Classification (`forest_stack.gis_models.forest_mask`)
 Sophisticated binary forest/non-forest classification featuring:
 - Multi-temporal NDVI time-series analysis with seasonal patterns
 - LULC (Land Use Land Cover) data integration for enhanced accuracy
@@ -87,7 +88,7 @@ Sophisticated binary forest/non-forest classification featuring:
 - Optimized for Rajasthan region with customizable parameters
 - Integration with ODC (Open Data Cube) STAC workflows
 
-### Canopy Density Analysis (`forest_stack.models.canopy_density`)
+### Canopy Density Analysis (`forest_stack.gis_models.canopy_density`)
 Comprehensive Forest Canopy Density (FCD) classification with:
 - Multi-spectral Sentinel-2 band analysis (Red, NIR, SWIR)
 - Advanced brightness, greenness, and shadow index calculations
@@ -115,7 +116,7 @@ Comprehensive Forest Canopy Density (FCD) classification with:
 
 ## Carbon & Wildlife Management Tools
 
-### Carbon Calculator (`forest_stack.common.scripts.carbon_calculator`)
+### Carbon Calculator (`forest_stack.modules.carbon_calculator`)
 TypeScript-based carbon sequestration calculations featuring:
 - Species-specific biomass models and growth parameters
 - Wood density and biomass expansion factor integration  
@@ -123,7 +124,7 @@ TypeScript-based carbon sequestration calculations featuring:
 - Temporal carbon accumulation modeling
 - Support for multiple tree species and forest types
 
-### Wildlife Management (`forest_stack.common.scripts.forms.wildlife`)
+### Wildlife Management (`forest_stack.modules.forms.wildlife`)
 Digital management tools including:
 - **Animal Rescue Forms**: Structured data collection for wildlife rescue operations
 - **Wildlife Census Tools**: Systematic census management and data recording
@@ -136,7 +137,7 @@ Digital management tools including:
 - **Tile Management**: Comprehensive tree cover and canopy tile processing with coverage optimization
 - Shell script automation for batch processing workflows
 
-### Geospatial Utilities (`forest_stack.common`)
+### Geospatial Utilities (`forest_stack.common.scripts`)
 - Advanced geometry processing functions with Shapely integration
 - Spatial data management tools with coordinate system handling
 - Configuration management for API keys, STAC endpoints, and processing parameters
@@ -169,9 +170,9 @@ The library requires **Python 3.8+** and includes these key dependencies:
 ## Quick Start Example
 
 ```python
-from forest_stack.models.ndvi.ndvi import NDVIProcessor
-from forest_stack.models.forest_mask.forest_mask import ForestMaskProcessor  
-from forest_stack.models.canopy_density.canopy_density import CanopyDensityProcessor
+from forest_stack.gis_models.ndvi.ndvi import NDVIProcessor
+from forest_stack.gis_models.forest_mask.forest_mask import ForestMaskProcessor  
+from forest_stack.gis_models.canopy_density.canopy_density import CanopyDensityProcessor
 from forest_stack.common.config.forest_config import Config
 
 # Initialize configuration
@@ -274,9 +275,9 @@ pytest tests/
 
 ### Module Documentation
 Detailed usage instructions and examples are available in individual module README files:
-- `forest-stack/models/ndvi/readme.md`
-- `forest-stack/models/forest_mask/forest_mask_readme.md`  
-- `forest-stack/models/canopy_density/canopy_density_readme.md`
+- `forest-stack/gis-models/ndvi/readme.md`
+- `forest-stack/gis-models/forest_mask/forest_mask_readme.md`  
+- `forest-stack/gis-models/canopy_density/canopy_density_readme.md`
 
 ## License
 
