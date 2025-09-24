@@ -1,27 +1,29 @@
 # Forest-Stack
 
-Open-source geospatial analytics modules for forestry, climate, and environmental monitoring workflows. A comprehensive Python library for processing satellite imagery, analyzing forest metrics, and generating climate data products using Sentinel-2 imagery and other geospatial datasets.
+**Forest Stack is developed in collaboration with the Japan International Cooperation Agency (JICA) and the Rajasthan Forest Department (RFD), with support from the Boston Consulting Group (BCG), the Centre for Digital Public Goods (CDPG), and Satsure.** It aligns with the vision of India’s Forest Stack initiative to digitally transform forest conservation and management by integrating data, technology, and governance on a scalable public infrastructure platform.
+
+**This repository is an open-source collection of geospatial analytics modules for forestry, climate, carbon, and wildlife management workflows.** The repository provides a comprehensive library (primarily in Python, with select TypeScript utilities) for processing satellite imagery, analyzing forest metrics, generating climate and environmental data products, estimating carbon sequestration, and supporting wildlife rescue and census management.
 
 ## Features
 
 ### Core Forest Analysis Models
-- **NDVI Processing**: Automated NDVI mosaic generation using Sentinel-2 imagery with cloud masking, seasonal composites, and parallel processing
-- **Forest Mask Classification**: Binary forest/non-forest classification using NDVI time-series, LULC data integration, and vegetation cyclicity evaluation
-- **Canopy Density Analysis**: Forest Canopy Density (FCD) classification with multi-band Sentinel-2 analysis using brightness, greenness, and shadow indices
+- **NDVI Processing**: **Automated NDVI mosaic generation** using Sentinel-2 imagery with cloud masking, seasonal composites, and parallel processing
+- **Forest Mask Classification**: **Binary forest/non-forest classification** using NDVI time-series, LULC data integration, and vegetation cyclicity evaluation
+- **Canopy Density Analysis**: **Forest Canopy Density (FCD) classification** with multi-band Sentinel-2 analysis using brightness, greenness, and shadow indices
 
 ### Climate & Environmental Utilities
-- **Groundwater Analysis**: Comprehensive groundwater depth processing and trend analysis tools
-- **Rainfall Processing**: Statistical rainfall analysis with average and mean calculations
-- **Soil Moisture Processing**: Area-weighted soil moisture statistics for rangeland regions with PostgreSQL/PostGIS integration
+- **Groundwater Analysis**: **Comprehensive groundwater depth processing and trend analysis tools**
+- **Rainfall Processing**: **Statistical rainfall analysis** with average and mean calculations
+- **Soil Moisture Processing**: **Area-weighted soil moisture statistics** for rangeland regions with PostgreSQL/PostGIS integration
 
 ### Carbon & Wildlife Management
-- **Carbon Calculator**: TypeScript-based carbon sequestration calculations with species-specific biomass models
-- **Wildlife Management**: Digital forms and tools for animal rescue operations and wildlife census management
+- **Carbon Calculator**: **TypeScript-based carbon sequestration calculations** with species-specific biomass models
+- **Wildlife Management**: **Digital forms and tools** for animal rescue operations and wildlife census management
 
 ### Data Processing & Web Tools
-- **TIFF to PMTiles**: Automated conversion utilities for web-ready raster formats
-- **Tile Management**: Tree cover and canopy tile processing with coverage optimization
-- **Geospatial Utilities**: Common functions for geometry processing, spatial data management, and configuration handling
+- **TIFF to PMTiles**: **Automated conversion utilities** for web-ready raster formats
+- **Tile Management**: **Tree cover and canopy tile processing** with coverage optimization
+- **Geospatial Utilities**: **Common functions for geometry processing, spatial data management, and configuration handling**
 
 ## Installation
 
