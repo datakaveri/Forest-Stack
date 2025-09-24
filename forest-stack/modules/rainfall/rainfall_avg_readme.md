@@ -294,7 +294,7 @@ CREATE INDEX IF NOT EXISTS idx_rainfall_end ON rainfall_data_agg(end_date);
 
 ### Running the Script
 ```bash
-cd forest-stack/common/scripts/rainfall/
+cd forest-stack/modules/rainfall/
 python rainfall_avg.py
 ```
 

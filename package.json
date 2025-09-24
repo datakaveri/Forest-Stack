@@ -1,0 +1,48 @@
+{
+  "name": "forest-stack",
+  "version": "1.0.0",
+  "description": "Comprehensive geospatial analysis library for forest monitoring, satellite imagery processing, and environmental analytics with Python GIS models and TypeScript utilities for carbon sequestration calculations and wildlife management",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint forest-stack/**/*.ts",
+    "format": "prettier --write forest-stack/**/*.ts"
+  },
+  "keywords": [
+    "forestry",
+    "satellite-imagery",
+    "geospatial",
+    "carbon-calculator",
+    "wildlife-management",
+    "typescript",
+    "ndvi",
+    "forest-analysis"
+  ],
+  "author": "CDPG",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "date-fns": "^2.30.0",
+    "drizzle-orm": "^0.28.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "typescript": "^5.2.2",
+    "eslint": "^8.50.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "prettier": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datakaveri/Forest-Stack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/datakaveri/Forest-Stack/issues"
+  },
+  "homepage": "https://github.com/datakaveri/Forest-Stack#readme"
+}

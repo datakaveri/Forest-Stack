@@ -42,9 +42,9 @@ forest-stack/
 │       ├── ndvi_state_composite/           # Final composite GeoTIFFs
 │       └── tiles/                          # (Optional) Web map tiles
 ├── forest_stack/
-│   └── models/
+│   └── gis-models/
 │       └── ndvi/
-│           └── ndvi_processor.py           # This module
+│           └── ndvi.py                     # This module
 └── common/
     └── data/
         ├── rajasthan_state_simp.geojson    # Simplified boundary

@@ -129,7 +129,7 @@ periods = [
 
 ### Running the Script
 ```bash
-cd forest-stack/common/scripts/groundwater_depth/
+cd forest-stack/modules/groundwater_depth/
 python groundwater_depth.py
 ```
 

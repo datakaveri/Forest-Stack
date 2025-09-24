@@ -239,7 +239,7 @@ con.execute(f"SET memory_limit='{MEMORY_LIMIT}B'")
 
 ### Running the Script
 ```bash
-cd forest-stack/common/scripts/groundwater_trend/
+cd forest-stack/modules/groundwater_trend/
 python groundwater_trend.py
 ```
 

@@ -37,9 +37,12 @@ forest-stack/
 │       └── forest_mask.tif                   # Output binary forest mask
 ├── forest_stack/
 │   ├── common/
-│   │   ├── forest_config.py                  # API keys and config
-│   │   └── forest_common.py                  # Shared util functions
-│   └── models/
+│   │   ├── config/
+│   │   │   └── forest_config.py              # API keys and config
+│   │   └── scripts/
+│   │       └── forest_common/
+│   │           └── forest_common.py          # Shared util functions
+│   └── gis-models/
 │       └── forest_mask/
 │           ├── forest_mask.py                # Main processing script
 │           └── forest_mask_readme.md         # Documentation (this file)
