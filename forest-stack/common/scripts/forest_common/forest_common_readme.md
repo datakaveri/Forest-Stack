@@ -42,7 +42,7 @@ This module provides shared utility functions for geospatial processing and STAC
 
 **Example Usage**:
 ```python
-from forest_stack.common.scripts.forest_common.forest_common import compute_grids
+from forest_stack.common.scripts.forest_common import compute_grids
 from shapely.geometry import Polygon
 
 # Create a large polygon
@@ -64,7 +64,7 @@ print(f"Created {len(grid_polygons)} grid cells")
 
 **Example Usage**:
 ```python
-from forest_stack.common.scripts.forest_common.forest_common import catalog_element84
+from forest_stack.common.scripts.forest_common import catalog_element84
 
 # Search for Sentinel-2 data
 search = catalog_element84.search(
@@ -130,7 +130,7 @@ ELEMENT84_STAC_URL = "https://earth-search.aws.element84.com/v1"
 ## 8. Example Integration
 
 ```python
-from forest_stack.common.scripts.forest_common.forest_common import compute_grids, catalog_element84
+from forest_stack.common.scripts.forest_common import compute_grids, catalog_element84
 from shapely.geometry import Polygon
 import geopandas as gpd
 

@@ -30,10 +30,13 @@ Open-source geospatial analytics modules for forestry, climate, and environmenta
 git clone https://github.com/datakaveri/forest-stack.git
 cd Forest-Stack
 
-# Create virtual environment and install dependencies
+# Create virtual environment and install Python dependencies
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 pip install -e .
+
+# Install TypeScript dependencies (for Carbon Calculator and Wildlife Management tools)
+npm install
 ```
 
 ## Project Structure
@@ -64,6 +67,11 @@ Forest-Stack/
 │   │       └── treecover_and_canopy_tile_commands/ # Tile processing
 │   └── __init__.py
 ├── requirements.txt                # Python dependencies
+├── package.json                   # TypeScript/Node.js dependencies
+├── tsconfig.json                  # TypeScript configuration
+├── .eslintrc.json                 # ESLint configuration
+├── .prettierrc.json               # Prettier formatting rules
+├── .gitignore                     # Git ignore patterns
 ├── LICENSE                        # License information
 └── README.md
 ```
@@ -96,27 +104,29 @@ Comprehensive Forest Canopy Density (FCD) classification with:
 - Parallelized processing using Dask and Xarray for efficient computation
 - Integration with existing forest mask outputs for targeted analysis
 
-## Climate & Environmental Utilities
+## Analysis Modules
 
-### Groundwater Analysis
-- **Depth Analysis**: Comprehensive groundwater depth processing with statistical analysis and spatial interpolation
-- **Trend Analysis**: Long-term groundwater trend calculation, monitoring, and visualization tools
+### Climate & Environmental Analysis (`forest_stack.modules`)
+
+#### Groundwater Analysis
+- **Depth Analysis** (`groundwater_depth`): Comprehensive groundwater depth processing with statistical analysis and spatial interpolation
+- **Trend Analysis** (`groundwater_trend`): Long-term groundwater trend calculation, monitoring, and visualization tools
 - Integration with hydrological datasets and time-series analysis
 
-### Rainfall Processing
-- **Average Rainfall**: Area-weighted rainfall averaging with spatial aggregation methods
+#### Rainfall Processing
+- **Average Rainfall** (`rainfall`): Area-weighted rainfall averaging with spatial aggregation methods
 - **Mean Rainfall**: Statistical rainfall analysis with temporal pattern recognition
 - Support for multiple precipitation datasets and temporal resolutions
 
-### Soil Moisture Processing
+#### Soil Moisture Processing (`soil_moisture`)
 - Area-weighted soil moisture statistics optimized for rangeland regions
 - Advanced spatial analysis with geometric processing
 - PostgreSQL/PostGIS integration for efficient spatial queries
 - Multi-temporal soil moisture trend analysis
 
-## Carbon & Wildlife Management Tools
+### Management & Carbon Tools
 
-### Carbon Calculator (`forest_stack.modules.carbon_calculator`)
+#### Carbon Calculator (`forest_stack.modules.carbon_calculator`)
 TypeScript-based carbon sequestration calculations featuring:
 - Species-specific biomass models and growth parameters
 - Wood density and biomass expansion factor integration  
@@ -124,7 +134,7 @@ TypeScript-based carbon sequestration calculations featuring:
 - Temporal carbon accumulation modeling
 - Support for multiple tree species and forest types
 
-### Wildlife Management (`forest_stack.modules.forms.wildlife`)
+#### Wildlife Management (`forest_stack.modules.forms.wildlife`)
 Digital management tools including:
 - **Animal Rescue Forms**: Structured data collection for wildlife rescue operations
 - **Wildlife Census Tools**: Systematic census management and data recording
@@ -205,6 +215,47 @@ canopy_density = canopy_processor.process_canopy_density(
     density_classes=4,  # Open, Low, Medium, High
     enable_dask_processing=True
 )
+```
+
+### TypeScript Modules Usage
+
+```typescript
+// Carbon Calculator example
+import { CarbonCalculator, SpeciesConfig } from 'forest-stack/modules/carbon_calculator';
+
+const speciesConfig: SpeciesConfig = {
+  speciesData: {
+    name: "Teak",
+    formula: "biomass",
+    averageIncrementInDiameter: "0.8",
+    woodDensity: "0.65",
+    biomassExpansionFactor: "1.4",
+    carbonFraction: "0.47",
+    co2ConversionFactor: "3.67",
+    rootShootRatio: "0.24"
+  },
+  numTrees: 1000,
+  harvestCycle: 25
+};
+
+const calculator = new CarbonCalculator();
+const carbonSequestration = calculator.calculateCarbonSequestration(speciesConfig);
+```
+
+### TypeScript Development
+
+```bash
+# Build TypeScript files
+npm run build
+
+# Development with watch mode  
+npm run dev
+
+# Lint TypeScript code
+npm run lint
+
+# Format code with Prettier
+npm run format
 ```
 
 ## Configuration

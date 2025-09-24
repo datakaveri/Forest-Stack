@@ -261,7 +261,7 @@ with tqdm(total=total_files, desc="Processing rainfall files") as pbar:
 
 ### Running the Script
 ```bash
-cd forest-stack/common/scripts/rainfall/
+cd forest-stack/modules/rainfall/
 python rainfall_mean.py
 ```
 

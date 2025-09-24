@@ -107,7 +107,7 @@ MEMORY_LIMIT = int(psutil.virtual_memory().total * 0.75)
 
 ### Running the Script
 ```bash
-cd forest-stack/common/scripts/soil_moisture/
+cd forest-stack/modules/soil_moisture/
 python soil_moisture.py
 ```
 
