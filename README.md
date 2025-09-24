@@ -1,6 +1,6 @@
 # Forest-Stack
 
-**Forest Stack is developed in collaboration with the Japan International Cooperation Agency (JICA) and the Rajasthan Forest Department (RFD), with support from the Boston Consulting Group (BCG), the Centre for Digital Public Goods (CDPG), and Satsure.** It aligns with the vision of India’s Forest Stack initiative to digitally transform forest conservation and management by integrating data, technology, and governance on a scalable public infrastructure platform.
+**Forest Stack is developed in collaboration with the Japan International Cooperation Agency (JICA) and the Rajasthan Forest Department (RFD), with support from the Boston Consulting Group (BCG), the Centre for Digital Public Goods (CDPG), and Satsure.** It has been created to digitally transform forest conservation and management by integrating data, technology, and governance on a scalable open platform.
 
 **This repository is an open-source collection of geospatial analytics modules for forestry, climate, carbon, and wildlife management workflows.** The repository provides a comprehensive library (primarily in Python, with select TypeScript utilities) for processing satellite imagery, analyzing forest metrics, generating climate and environmental data products, estimating carbon sequestration, and supporting wildlife rescue and census management.
 
