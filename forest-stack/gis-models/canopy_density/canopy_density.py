@@ -23,8 +23,8 @@ from rioxarray.merge import merge_arrays
 from shapely.geometry import MultiPolygon, Polygon
 from tqdm.notebook import tqdm
 
-from forest_stack.common.forest_config import Config
-from forest_stack.common.forest_common import compute_grids, catalog_element84
+from forest_stack.common.config.forest_config import Config
+from forest_stack.common.scripts.forest_common import compute_grids, catalog_element84
 
 # # # # # # # #
 # INPUTS      #
