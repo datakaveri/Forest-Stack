@@ -8,12 +8,6 @@ class Config:
 
     # Forest Canopy Density Classification Thresholds by State/Region
     FCD_THRESHOLDS = {
-        "default": {
-            "open_forest": {"min": 0, "max": 30},
-            "low_density": {"min": 30, "max": 55},
-            "medium_density": {"min": 55, "max": 80},
-            "high_density": {"min": 80, "max": 100}
-        },
         "RJ": {
             "open_forest": {"min": 0, "max": 25},
             "low_density": {"min": 25, "max": 50},
@@ -23,7 +17,7 @@ class Config:
     }
 
     @classmethod
-    def get_fcd_thresholds(cls, state_code: str = "default") -> dict:
+    def get_fcd_thresholds(cls, state_code: str) -> dict:
         """Get FCD classification thresholds for a specific state
         
         Args:

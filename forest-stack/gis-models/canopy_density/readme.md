@@ -131,21 +131,20 @@ def classify_fcd(fcd: xr.DataArray, state_code: str = "default", custom_threshol
 
 #### **Classification Threshold System**:
 
-**National Default Thresholds**:
+**Rajasthan Thresholds**:
 | Class | Range (%) | Description |
 |-------|-----------|-------------|
-| 1 | 0-30 | Open Forest - Sparse canopy cover |
-| 2 | 30-55 | Low Density - Moderate canopy gaps |
-| 3 | 55-80 | Medium Density - Good canopy coverage |
-| 4 | 80-100 | High Density - Dense canopy cover |
+| 1 | 0-25 | Open Forest - Sparse canopy cover |
+| 2 | 25-50 | Low Density - Moderate canopy gaps |
+| 3 | 50-75 | Medium Density - Good canopy coverage |
+| 4 | 75-100 | High Density - Dense canopy cover |
 
 **State-Specific Adaptations**:
 States can define custom thresholds in `forest-stack/common/config/forest_config.py`:
 
 ```python
 FCD_THRESHOLDS = {
-    "default": { ... },  # National standards
-    "RJ": {              # Rajasthan (arid conditions)
+    "RJ": {              # Rajasthan
         "open_forest": {"min": 0, "max": 25},
         "low_density": {"min": 25, "max": 50},
         "medium_density": {"min": 50, "max": 75},
